@@ -1,0 +1,56 @@
+yaz ("=== Ornek 2: Aritmetik Ifadeler ===")?
+
+yaz ("--- Toplama ---")?
+toplam = 25 + 17?
+yaz (toplam)?
+
+yaz ("--- Cikarma ---")?
+fark = 100 - 37?
+yaz (fark)?
+
+yaz ("--- Carpma ---")?
+carpim = 8 * 6?
+yaz (carpim)?
+
+yaz ("--- Bolme ---")?
+bolum = 100 / 4?
+yaz (bolum)?
+
+yaz ("--- Birden Fazla Operator ---")?
+sonuc1 = 10 + 5 - 3?
+yaz (sonuc1)?
+
+sonuc2 = 2 * 3 + 4?
+yaz (sonuc2)?
+
+sonuc3 = 100 - 20 * 3?
+yaz (sonuc3)?
+
+yaz ("--- Parantezli Ifadeler ---")?
+sonuc4 = (10 + 5) * 2?
+yaz (sonuc4)?
+
+sonuc5 = (100 - 40) / 3?
+yaz (sonuc5)?
+
+sonuc6 = (2 + 3) * (4 + 1)?
+yaz (sonuc6)?
+
+yaz ("--- Degiskenlerle Aritmetik ---")?
+x = 15?
+y = 4?
+toplam2 = x + y?
+fark2 = x - y?
+carpim2 = x * y?
+
+yaz (toplam2)?
+yaz (fark2)?
+yaz (carpim2)?
+
+yaz ("--- Metin Birlestirme ---")?
+isim = "YEM"?
+versiyon = 1?
+bilgi = isim + " Dili v" + versiyon?
+yaz (bilgi)?
+
+yaz ("=== Ornek 2 Bitti ===")?

@@ -1,0 +1,39 @@
+yaz ("=== Ornek 1: Degisken Tanimlama ve Atama ===")?
+
+yaz ("--- Metin Degiskenleri ---")?
+ad = "Mehmet"?
+soyad = "Yilmaz"?
+mesaj = "Merhaba Dunya"?
+
+yaz (ad)?
+yaz (soyad)?
+yaz (mesaj)?
+
+yaz ("--- Sayi Degiskenleri ---")?
+yas = 21?
+numara = 1001?
+puan = 85?
+
+yaz (yas)?
+yaz (numara)?
+yaz (puan)?
+
+yaz ("--- Degisken Guncelleme ---")?
+sayac = 0?
+yaz (sayac)?
+sayac = 1?
+yaz (sayac)?
+sayac = 100?
+yaz (sayac)?
+
+yaz ("--- Degiskenler Arasi Atama ---")?
+a = 42?
+b = a?
+yaz (a)?
+yaz (b)?
+
+yaz ("--- Metin Birlestirme ile Atama ---")?
+tamAd = ad + " " + soyad?
+yaz (tamAd)?
+
+yaz ("=== Ornek 1 Bitti ===")?

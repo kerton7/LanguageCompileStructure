@@ -1,0 +1,7 @@
+yaz ("Bu satir dogru yazilmis")?
+
+x = 10?
+
+yaz (x?
+
+yaz ("Bu satira hic ulasilamaz")?

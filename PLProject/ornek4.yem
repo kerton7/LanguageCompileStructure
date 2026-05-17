@@ -1,0 +1,34 @@
+yaz ("=== Ornek 4: Dongu Yapilari ===")?
+
+yaz ("--- Her Dongusu (For) ---")?
+yaz ("0 dan 4 e kadar sayma:")?
+her (i = 0; i < 5; i = i + 1) {
+   yaz ("Adim: " + i)
+}
+
+yaz ("--- Her Dongusu ile Toplam ---")?
+toplam = 0?
+her (j = 1; j <= 5; j = j + 1) {
+   toplam = toplam + j
+}
+yaz ("1 den 5 e toplam: " + toplam)?
+
+yaz ("--- Surece Dongusu (While) ---")?
+yaz ("Geri sayim:")?
+sayac = 5?
+sürece (sayac > 0) {
+   yaz (sayac)
+   sayac = sayac - 1
+}
+yaz ("Bitti!")?
+
+yaz ("--- Surece Dongusu ile Carpim ---")?
+carpim = 1?
+k = 1?
+sürece (k <= 4) {
+   carpim = carpim * k
+   k = k + 1
+}
+yaz ("4 faktoriyel: " + carpim)?
+
+yaz ("=== Ornek 4 Bitti ===")?

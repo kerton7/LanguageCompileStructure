@@ -1,0 +1,51 @@
+yaz ("=== Ornek 3: Kosul Yapilari (eger / degilse) ===")?
+
+yaz ("--- Basit Eger (kosul dogru) ---")?
+x = 10?
+eğer (x > 5) {
+   yaz ("x 5 ten buyuktur")
+}
+
+yaz ("--- Eger-Degilse (kosul dogru) ---")?
+puan = 75?
+eğer (puan >= 50) {
+   yaz ("Gecti")
+} değilse {
+   yaz ("Kaldi")
+}
+
+yaz ("--- Eger-Degilse (kosul yanlis) ---")?
+sicaklik = 10?
+eğer (sicaklik > 30) {
+   yaz ("Hava sicak")
+} değilse {
+   yaz ("Hava sicak degil")
+}
+
+yaz ("--- Esitlik Kontrolu ---")?
+a = 42?
+b = 42?
+eğer (a == b) {
+   yaz ("a ve b esit")
+} değilse {
+   yaz ("a ve b esit degil")
+}
+
+yaz ("--- Esit Degil Kontrolu ---")?
+m = 7?
+n = 3?
+eğer (m != n) {
+   yaz ("m ve n farkli")
+} değilse {
+   yaz ("m ve n ayni")
+}
+
+yaz ("--- Kucuk Esit Kontrolu ---")?
+yas = 18?
+eğer (yas <= 18) {
+   yaz ("Yas 18 veya alti")
+} değilse {
+   yaz ("Yas 18 ustu")
+}
+
+yaz ("=== Ornek 3 Bitti ===")?
