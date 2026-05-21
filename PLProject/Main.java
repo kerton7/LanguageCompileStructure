@@ -9,7 +9,7 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        String filePath = "C:\\Users\\mehmet\\Desktop\\PLProject\\PLProject\\ornek1.yem";
+        String filePath = "ornek1.yem";
         if (args.length > 0) {
             filePath = args[0];
         }

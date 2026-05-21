@@ -166,7 +166,13 @@ public class Parser {
     match(TokenType.TOKEN_SEPARATOR, ";");
 
     int incrementStartTokenIndex = currentTokenIndex;
-    parseAssignmentStatementNoSemicolon();
+    // Increment tokenlarını değerlendirmeden atla (ilk iterasyonda erken çalışmasını engelle)
+    while (!(currentToken().type == TokenType.TOKEN_SEPARATOR && currentToken().value.equals(")"))) {
+        if (currentToken().type == TokenType.TOKEN_EOF) {
+            throw new RuntimeException("For döngüsü başlığında beklenmedik dosya sonu.");
+        }
+        consumeToken();
+    }
     match(TokenType.TOKEN_SEPARATOR, ")");
 
     match(TokenType.TOKEN_SEPARATOR, "{");
@@ -413,8 +419,7 @@ public class Parser {
         System.out.println("  Expression değerlendiriliyor..");
         Object left = evaluateTerm();
         while (currentToken().type == TokenType.TOKEN_OPERATOR
-                && (currentToken().value.equals("+") || currentToken().value.equals("-")
-                || currentToken().value.equals("*") || currentToken().value.equals("/"))) {
+                && (currentToken().value.equals("+") || currentToken().value.equals("-"))) {
             String operator = consumeToken().value;
             Object right = evaluateTerm();
 
@@ -427,15 +432,6 @@ public class Parser {
                         break;
                     case "-":
                         left = l - r;
-                        break;
-                    case "*":
-                        left = l * r;
-                        break;
-                    case "/":
-                        if (r == 0) {
-                            throw new RuntimeException("Runtime Hatası: Sıfıra bölme hatası. Konum: " + (currentToken().line + 1) + ". satır, " + (currentToken().column + 1) + ". sütun.");
-                        }
-                        left = (double)l / r;
                         break;
                 }
             } else if (left instanceof String || right instanceof String) {
@@ -457,6 +453,35 @@ public class Parser {
 
     private Object evaluateTerm() {
         System.out.println("    Term değerlendiriliyor...");
+        Object left = evaluateFactor();
+        while (currentToken().type == TokenType.TOKEN_OPERATOR
+                && (currentToken().value.equals("*") || currentToken().value.equals("/"))) {
+            String operator = consumeToken().value;
+            Object right = evaluateFactor();
+
+            if (left instanceof Integer && right instanceof Integer) {
+                int l = (int) left;
+                int r = (int) right;
+                switch (operator) {
+                    case "*":
+                        left = l * r;
+                        break;
+                    case "/":
+                        if (r == 0) {
+                            throw new RuntimeException("Runtime Hatası: Sıfıra bölme hatası. Konum: " + (currentToken().line + 1) + ". satır, " + (currentToken().column + 1) + ". sütun.");
+                        }
+                        left = (double)l / r;
+                        break;
+                }
+            } else {
+                throw new RuntimeException("Runtime Hatası: Desteklenmeyen ifade türleri. Konum: " + (currentToken().line + 1) + ". satır, " + (currentToken().column + 1) + ". sütun.");
+            }
+        }
+        return left;
+    }
+
+    private Object evaluateFactor() {
+        System.out.println("      Factor değerlendiriliyor...");
         Token t = currentToken();
         if (t.type == TokenType.TOKEN_IDENTIFIER) {
             consumeToken();
@@ -472,14 +497,14 @@ public class Parser {
             consumeToken();
             return t.value;
         } else if (t.type == TokenType.TOKEN_SEPARATOR && t.value.equals("(")) {
-            System.out.println("    Parantezli ifade başlıyor.");
+            System.out.println("      Parantezli ifade başlıyor.");
             consumeToken();
             Object result = evaluateExpression();
             match(TokenType.TOKEN_SEPARATOR, ")");
-            System.out.println("    Parantezli ifade bitti.");
+            System.out.println("      Parantezli ifade bitti.");
             return result;
         } else {
-            throw new RuntimeException("Syntax Hatası: Terimde beklenmedik belirteç: " + t.type + " ('" + t.value + "') konumunda " + (t.line + 1) + ". satır, " + (t.column + 1) + ". sütun.");
+            throw new RuntimeException("Syntax Hatası: Faktörde beklenmedik belirteç: " + t.type + " ('" + t.value + "') konumunda " + (t.line + 1) + ". satır, " + (t.column + 1) + ". sütun.");
         }
     }
 }
