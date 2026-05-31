@@ -1,6 +1,6 @@
-ad = "Mehmet"?
-soyad = "Yilmaz"?
-yas = 21?
+ad = "Kürşat"?
+soyad = "Kılıçarslan"?
+yas = 23?
 puan = 85?
 
 yaz (ad)?
